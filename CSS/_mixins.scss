@@ -1,0 +1,113 @@
+/* Mixins */
+
+
+/* Grid */
+
+@mixin grid ($columstart, $columend, $rowstart, $rowend) {
+	position: relative;
+	grid-column-start: $columstart;
+	grid-column-end: $columend;
+	grid-row-start: $rowstart;
+	grid-row-end: $rowend;
+}
+
+
+/* Flex */
+
+@mixin flexcenter ( $direction, $justify, $align) {
+	display: flex;
+	flex-flow: $direction;
+	justify-content: $justify;
+	align-content: $align;
+}
+
+
+/* Hamburger Menu */
+
+@mixin hamburger-menu-lines ($linecolor) {
+	width: 100%;
+	height: 3px;
+	background-color: $linecolor;
+	transition: all 0.8s;
+}
+
+
+/* Nav Buttons */
+
+@mixin navbutton ( $textcolor, $linecolor) {
+	text-decoration: none;
+	font-size: 22px;
+	color: $textcolor;
+	font-weight: 300;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	position: relative;
+	padding-left: 15px;
+	padding-right: 15px;
+	&::before,
+	&::after {
+		content: "";
+		width: 100%;
+		height: 2px;
+		background-color: $linecolor;
+		position: absolute;
+		left: 0;
+		transform: scaleX(0);
+		transition: transform 0.5s;
+	}
+	&::after {
+		bottom: 0;
+		transform-origin: right;
+	}
+	&::before {
+		top: 0;
+		transform-origin: left;
+	}
+	&:hover::before,
+	&:hover::after {
+		transform: scaleX(1);
+	}
+}
+
+
+/* Nav Buttons Change */
+
+@mixin navbutton-change ($bgcolor) {
+	font-style: italic;
+	color: rgb(253, 253, 253);
+	background-color: $bgcolor;
+	transition: 1s;
+}
+
+
+/* Radio Boxes */
+
+@mixin radio-btn ($radiocolor) {
+	width: 22px;
+	height: 22px;
+	border-radius: 100px;
+	background: $radiocolor;
+	margin-right: 10px;
+	position: relative;
+	&::before {
+		content: '';
+		display: inline-block;
+		width: inherit;
+		height: inherit;
+		border-radius: inherit;
+		background: hsl(0, 0%, 90%);
+		transform: scale(1.1);
+		transition: .3s;
+	}
+}
+
+
+/* Text Boxes */
+
+@mixin text-boxes ($textcolor) {
+	font-size: 2em;
+	text-align: center;
+	& p {
+		color: $textcolor;
+	}
+}
